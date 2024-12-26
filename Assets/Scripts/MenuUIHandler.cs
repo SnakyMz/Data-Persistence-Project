@@ -1,11 +1,15 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
 
 public class MenuUIHandler : MonoBehaviour
 {
+    public TMP_InputField playerName;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -21,6 +25,7 @@ public class MenuUIHandler : MonoBehaviour
     // To start a new game
     public void StartNew()
     {
+        GameManager.Instance.nameText = playerName.text;
         SceneManager.LoadScene(1);
     }
 
