@@ -9,17 +9,16 @@ using UnityEditor;
 public class MenuUIHandler : MonoBehaviour
 {
     public TMP_InputField playerName;
+    public TextMeshProUGUI menuHighScore;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        GameManager.Instance.LoadHighScore();
+        if(GameManager.Instance.highScore != 0)
+        {
+            menuHighScore.text = GameManager.Instance.highScoreName + " : " + GameManager.Instance.highScore;
+        }
     }
 
     // To start a new game

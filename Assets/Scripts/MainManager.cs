@@ -65,12 +65,21 @@ public class MainManager : MonoBehaviour
     void AddPoint(int point)
     {
         m_Points += point;
-        ScoreText.text = $"{GameManager.Instance.nameText} : {m_Points}";
+        ScoreText.text = $"Score : {m_Points}";
     }
 
     public void GameOver()
     {
+        CalculateHighScore(m_Points);
         m_GameOver = true;
         GameOverText.SetActive(true);
+    }
+
+    private void CalculateHighScore(int points)
+    {
+        if(points > GameManager.Instance.highScore)
+        {
+            GameManager.Instance.SaveHighScore(GameManager.Instance.nameText, m_Points);
+        }
     }
 }
